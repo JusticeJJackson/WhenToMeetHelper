@@ -1,25 +1,18 @@
 {
-  "manifest_version": 2,
-  "name": "When2Meet Helper",
+  "manifest_version": 3,
+  "name": "When2Meet Calendar Autofill",
   "version": "1.0",
-  "description": "Autofills When2Meet forms with calendar data.",
-  "permissions": [
-    "activeTab",
-    "https://www.googleapis.com/*",
-    "https://www.when2meet.com/*"
-  ],
-  "host_permissions": ["https://www.when2meet.com/*"],
+  "description": "Autofill when2meet.com with calendar data",
+  "host_permissions": ["https://www.googleapis.com/*", "https://www.when2meet.com/*"],
   "background": {
-    "service_worker": ["background.js"]
+    "service_worker": "background.js",
+    "type": "module"
   },
   "content_scripts": [
     {
       "matches": ["https://www.when2meet.com/*"],
-      "js": ["content.js"]
+      "js": ["content.js"],
+      "all_frames": true
     }
-  ],
-  "action": {
-    "default_title": "When2Meet Helper",
-    "default_popup": "popup.html"
-  }
+  ]
 }
